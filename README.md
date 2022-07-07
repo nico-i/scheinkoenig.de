@@ -2,6 +2,7 @@
 
 1. Changed the post-type of all projects to "post" instead of "project" to be able to query for them via WPGrapQL.
 2. Changed the read settings in WordPress from static site to display latest posts to be able to query for them via WPGrapQL.
+3. Made the "About" and "Contact" pages children of work page to ensure that the "Work" page is registered as the index.
 
 # Next.js WordPress Starter
 
