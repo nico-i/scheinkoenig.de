@@ -1,3 +1,8 @@
+# What I have done
+
+1. Changed the post-type of all projects to "post" instead of "project" to be able to query for them via WPGrapQL.
+2. Changed the read settings in WordPress from static site to display latest posts to be able to query for them via WPGrapQL.
+
 # Next.js WordPress Starter
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
