@@ -40,11 +40,12 @@ export default function NavBar() {
           {isOpen ? (
             <CgClose className="h-8 w-8 text-text md:w-10 lg:h-10" />
           ) : (
-            <HiMenuAlt4 className="h-8 w-8 text-text" />
+            <HiMenuAlt4 className="h-8 w-8 text-text md:w-10 lg:h-10" />
           )}
         </button>
       </div>
       <div
+        onClick={() => setIsOpen(false)}
         className={classNames(
           { 'opacity-0': !isOpen || !fadeIn, 'opacity-100': fadeIn && isOpen, hidden: !isVisible },
           'fixed top-0 z-10 -mt-4 flex h-full w-full items-center justify-center bg-theme transition duration-200 lg:mt-4'
