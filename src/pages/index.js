@@ -1,3 +1,4 @@
+import NavBar from 'components/NavBar';
 import PrePage from 'components/PrePage';
 import useSite from 'hooks/use-site';
 import { decode } from 'html-entities';
@@ -43,7 +44,8 @@ export default function Home({ config }) {
         <link href={`${config.fontText}&display=swap`} rel="stylesheet" />
         <link href={`${config.fontTheme}&display=swap`} rel="stylesheet" />
       </Head>
-      <PrePage isVisible={true} title={title} subtitle={description} videoUrl={prepageBgVideo} />
+      <NavBar />
+      <PrePage title={title} subtitle={description} videoUrl={prepageBgVideo} />
     </>
   );
 }
