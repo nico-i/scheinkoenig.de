@@ -1,7 +1,6 @@
 import usePageMetadata from 'hooks/use-page-metadata';
 import useSite from 'hooks/use-site';
 import { getAllPages, getBreadcrumbsByUri, getPageByUri } from 'lib/pages';
-import { helmetSettingsFromMetadata } from 'lib/site';
 
 export default function Page({ page, breadcrumbs }) {
   const { title, metaTitle, description, children } = page;
