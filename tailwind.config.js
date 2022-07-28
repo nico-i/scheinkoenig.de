@@ -12,10 +12,16 @@ function withOpacity(variableName) {
 module.exports = {
   content: ['./src/pages/*.{js,ts,jsx,tsx}', './src/components/*.{js,ts,jsx,tsx}'],
   theme: {
+    fontFamily: {
+      theme: 'var(--font-theme)',
+      text: 'var(--font-text)',
+    },
     extend: {
-      fontFamily: {
-        theme: 'var(--font-theme)',
-        text: 'var(--font-text)',
+      fontSize: {
+        hero: '12rem',
+      },
+      lineHeight: {
+        hero: '10rem',
       },
       textColor: {
         primary: withOpacity('--color-primary'),
