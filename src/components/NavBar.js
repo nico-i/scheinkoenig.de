@@ -47,7 +47,7 @@ export default function NavBar() {
       <div
         className={classNames(
           { 'opacity-0': !isOpen || !fadeIn, 'opacity-100': fadeIn && isOpen, hidden: !isVisible },
-          'fixed top-0 z-10 flex h-full w-full items-center justify-center bg-theme transition duration-200 lg:mt-4'
+          'fixed top-0 z-10 -mt-4 flex h-full w-full items-center justify-center bg-theme transition duration-200 lg:mt-4'
         )}
       >
         <ul className="text-center font-theme text-8xl leading-normal text-primary lg:text-hero lg:leading-none">
