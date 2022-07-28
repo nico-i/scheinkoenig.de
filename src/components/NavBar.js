@@ -32,7 +32,7 @@ export default function NavBar() {
     <>
       <div className="fixed top-0 z-20 flex w-full justify-between p-4 lg:p-8">
         <Link href={'/'}>
-          <a>
+          <a onClick={() => setIsOpen(false)}>
             <TbCrown className="h-8 w-8 text-text md:w-10 lg:h-10" />
           </a>
         </Link>
