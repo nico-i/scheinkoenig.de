@@ -1,15 +1,14 @@
 import classNames from 'classnames';
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function PrePage(props) {
-  const [isHover, setIsHover] = React.useState(false);
-  const [isVisible, setIsVisible] = React.useState(props.isVisible);
-  const [isClicked, setIsClicked] = React.useState(false);
-
+  const [isHover, setIsHover] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isClicked, setIsClicked] = useState(false);
   const videoBg = props.videoUrl ? (
     <iframe
       src={`${props.videoUrl.split('?')[0]}?background=1&autoplay=1&loop=1&byline=0&title=0`}
-      className="-translate-x-1/2 -translate-y-1/2 h-[56.25vw] min-h-screen min-w-[177.77vh] w-screen absolute top-1/2 left-1/2 -z-10"
+      className="absolute top-1/2 left-1/2 -z-10 h-[56.25vw] min-h-screen w-screen min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2"
       frameBorder="0"
       webkitallowfullscreen
       mozallowfullscreen="true"
@@ -19,7 +18,9 @@ export default function PrePage(props) {
 
   useEffect(() => {
     if (isClicked) {
-      setTimeout(() => setIsVisible(false), 300);
+      setTimeout(() => {
+        setIsVisible(false);
+      }, 300);
     }
   }, [isClicked]);
 
@@ -27,17 +28,17 @@ export default function PrePage(props) {
     <div
       className={classNames(
         { 'opacity-0': isClicked, 'bg-prepage': !props.videoUrl, 'bg-theme': props.videoUrl },
-        'bg-cover transition flex fixed top-0 left-0 w-full h-full bg-center justify-center items-center'
+        'fixed top-0 left-0 z-50 flex h-full w-full items-center justify-center bg-cover bg-center transition'
       )}
     >
       {/* If there is a video background, show it */}
       {videoBg}
-      <button className="text-center mt-12">
+      <button className="mt-12 text-center">
         <span
           onClick={() => setIsClicked(true)}
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
-          className="tracking-widest font-theme text-primary text-6xl lg:text-hero lg:leading-hero font-medium"
+          className="font-theme text-6xl font-medium tracking-widest text-primary lg:text-hero lg:leading-hero"
         >
           {props.title}
         </span>
@@ -45,7 +46,7 @@ export default function PrePage(props) {
         <span
           className={classNames(
             { 'lg:opacity-0': !isHover },
-            'transition duration-300 underline lg:underline-offset-4 decoration-2 lg:decoration-4 text-text font-text lg:text-3xl font-black'
+            'font-text font-black text-text underline decoration-2 transition duration-300 lg:text-3xl lg:decoration-4 lg:underline-offset-4'
           )}
         >
           {props.subtitle}
