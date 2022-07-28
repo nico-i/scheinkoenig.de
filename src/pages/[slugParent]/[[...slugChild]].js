@@ -1,21 +1,7 @@
-import Link from 'next/link';
-import { Helmet } from 'react-helmet';
-
-import { getPageByUri, getAllPages, getBreadcrumbsByUri } from 'lib/pages';
-import { WebpageJsonLd } from 'lib/json-ld';
-import { helmetSettingsFromMetadata } from 'lib/site';
-import useSite from 'hooks/use-site';
 import usePageMetadata from 'hooks/use-page-metadata';
-
-import Layout from 'components/Layout';
-import Header from 'components/Header';
-import Content from 'components/Content';
-import Section from 'components/Section';
-import Container from 'components/Container';
-import FeaturedImage from 'components/FeaturedImage';
-import Breadcrumbs from 'components/Breadcrumbs';
-
-import styles from 'styles/pages/Page.module.scss';
+import useSite from 'hooks/use-site';
+import { getAllPages, getBreadcrumbsByUri, getPageByUri } from 'lib/pages';
+import { helmetSettingsFromMetadata } from 'lib/site';
 
 export default function Page({ page, breadcrumbs }) {
   const { title, metaTitle, description, slug, content, featuredImage, children } = page;
@@ -38,69 +24,9 @@ export default function Page({ page, breadcrumbs }) {
 
   const hasChildren = Array.isArray(children) && children.length > 0;
   const hasBreadcrumbs = Array.isArray(breadcrumbs) && breadcrumbs.length > 0;
-
   const helmetSettings = helmetSettingsFromMetadata(metadata);
 
-  return (
-    <Layout>
-      <Helmet {...helmetSettings} />
-
-      <WebpageJsonLd
-        title={metadata.title}
-        description={metadata.description}
-        siteTitle={siteMetadata.title}
-        slug={slug}
-      />
-
-      <Header>
-        {hasBreadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
-        {featuredImage && (
-          <FeaturedImage
-            {...featuredImage}
-            src={featuredImage.sourceUrl}
-            dangerouslySetInnerHTML={featuredImage.caption}
-          />
-        )}
-        <h1 className={styles.title}>{title}</h1>
-      </Header>
-
-      <Content>
-        <Section>
-          <Container>
-            <div
-              className={styles.content}
-              dangerouslySetInnerHTML={{
-                __html: content,
-              }}
-            />
-          </Container>
-        </Section>
-
-        {hasChildren && (
-          <Section className={styles.sectionChildren}>
-            <Container>
-              <aside>
-                <p className={styles.childrenHeader}>
-                  <strong>{title}</strong>
-                </p>
-                <ul>
-                  {children.map((child) => {
-                    return (
-                      <li key={child.id}>
-                        <Link href={child.uri}>
-                          <a>{child.title}</a>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </aside>
-            </Container>
-          </Section>
-        )}
-      </Content>
-    </Layout>
-  );
+  return <></>;
 }
 
 export async function getStaticProps({ params = {} } = {}) {
