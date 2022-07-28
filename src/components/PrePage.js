@@ -28,7 +28,7 @@ export default function PrePage(props) {
     <div
       className={classNames(
         { 'opacity-0': isClicked, 'bg-prepage': !props.videoUrl, 'bg-theme': props.videoUrl },
-        'fixed top-0 left-0 z-50 flex h-full w-full items-center justify-center bg-cover bg-center transition'
+        'fixed top-0 left-0 z-50 flex h-full w-full items-center justify-center bg-cover bg-center transition duration-300'
       )}
     >
       {/* If there is a video background, show it */}
