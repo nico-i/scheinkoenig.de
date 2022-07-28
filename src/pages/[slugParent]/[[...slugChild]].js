@@ -4,7 +4,7 @@ import { getAllPages, getBreadcrumbsByUri, getPageByUri } from 'lib/pages';
 import { helmetSettingsFromMetadata } from 'lib/site';
 
 export default function Page({ page, breadcrumbs }) {
-  const { title, metaTitle, description, slug, content, featuredImage, children } = page;
+  const { title, metaTitle, description, children } = page;
 
   const { metadata: siteMetadata = {} } = useSite();
 
@@ -22,9 +22,11 @@ export default function Page({ page, breadcrumbs }) {
     metadata.twitter.title = metadata.title;
   }
 
+  /* 
   const hasChildren = Array.isArray(children) && children.length > 0;
   const hasBreadcrumbs = Array.isArray(breadcrumbs) && breadcrumbs.length > 0;
   const helmetSettings = helmetSettingsFromMetadata(metadata);
+ */
 
   return <></>;
 }
