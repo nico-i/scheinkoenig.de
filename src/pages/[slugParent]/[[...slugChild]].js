@@ -2,8 +2,8 @@ import usePageMetadata from 'hooks/use-page-metadata';
 import useSite from 'hooks/use-site';
 import { getAllPages, getBreadcrumbsByUri, getPageByUri } from 'lib/pages';
 
-export default function Page({ page, breadcrumbs }) {
-  const { title, metaTitle, description, children } = page;
+export default function Page({ page }) {
+  const { title, metaTitle, description } = page;
 
   const { metadata: siteMetadata = {} } = useSite();
 
