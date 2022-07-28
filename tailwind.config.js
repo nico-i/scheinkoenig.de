@@ -14,8 +14,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'theme': 'var(--font-theme)',
-        'text': 'var(--font-text)',
+        theme: 'var(--font-theme)',
+        text: 'var(--font-text)',
       },
       textColor: {
         primary: withOpacity('--color-primary'),
@@ -31,6 +31,9 @@ module.exports = {
       borderColor: {
         primary: withOpacity('--color-primary'),
         text: withOpacity('--color-text'),
+      },
+      backgroundImage: {
+        prepage: 'var(--img-prepage)',
       },
     },
   },
