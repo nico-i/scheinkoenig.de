@@ -35,12 +35,12 @@ export function removeExtraSpaces(text) {
 /**
  * Change hex color into RGB
  */
-export const getRGBColor = (hex, type) => {
+export const getRGBColor = (hex) => {
   let color = hex.replace(/#/g, '');
   // rgb values
   let r = parseInt(color.substr(0, 2), 16);
   let g = parseInt(color.substr(2, 2), 16);
   let b = parseInt(color.substr(4, 2), 16);
 
-  return `--color-${type}: ${r}, ${g}, ${b};`;
+  return `${r}, ${g}, ${b};`;
 };
