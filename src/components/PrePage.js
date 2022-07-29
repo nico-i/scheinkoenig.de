@@ -1,7 +1,8 @@
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { MouseParallaxChild, MouseParallaxContainer } from 'react-parallax-mouse';
 
-export default function PrePage({ videoUrl, onVisibilityChange, isBgImg, title, subtitle, parallaxStrength }) {
+export default function PrePage({ videoUrl, handelClick, isBgImg, title, subtitle, parallaxStrength }) {
   const [isHover, setIsHover] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
   const videoBg = videoUrl ? (
@@ -16,36 +17,49 @@ export default function PrePage({ videoUrl, onVisibilityChange, isBgImg, title, 
   ) : null;
 
   return (
-    <div
-      className={classNames(
-        { 'opacity-0': fadeOut, 'bg-prepage': isBgImg, 'bg-theme': videoUrl || !isBgImg },
-        'fixed top-0 left-0 z-50 flex h-screen w-screen items-center justify-center bg-cover bg-center transition duration-300'
-      )}
-    >
-      {/* If there is a video background, show it */}
-      {videoBg}
-      <button
-        className="mt-12 text-center"
-        onMouseEnter={() => setIsHover(true)}
-        onMouseLeave={() => setIsHover(false)}
-        onClick={() => {
-          setFadeOut(true);
-          onVisibilityChange(false);
-        }}
-      >
-        <span className="font-theme text-6xl font-medium tracking-widest text-primary lg:text-hero lg:leading-hero">
-          {title}
-        </span>
-        <br />
-        <span
+    <>
+      <MouseParallaxContainer className="fixed top-0 left-0 flex items-center justify-center">
+        <MouseParallaxChild inverted factorX={parallaxStrength * 1.5} factorY={parallaxStrength * 1.5}>
+          <div
+            className={classNames(
+              { 'opacity-0': fadeOut, 'bg-prepage': isBgImg, 'bg-theme': videoUrl || !isBgImg },
+              'h-screen w-screen scale-110 bg-cover bg-center transition duration-300'
+            )}
+          >
+            {/* If there is a video background, show it */}
+            {videoBg}
+          </div>
+        </MouseParallaxChild>
+        <div
           className={classNames(
-            { 'lg:opacity-0': !isHover },
-            'font-text font-black text-text transition duration-300 lg:text-3xl'
+            { 'opacity-0': fadeOut },
+            'absolute inset-0 z-10 flex h-full w-full items-center justify-center transition duration-300'
           )}
         >
-          {subtitle}
-        </span>
-      </button>
-    </div>
+          <button
+            className="mt-12 text-center"
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
+            onClick={() => {
+              setFadeOut(true);
+              handelClick();
+            }}
+          >
+            <span className="font-theme text-6xl font-medium tracking-widest text-primary lg:text-hero lg:leading-hero">
+              {title}
+            </span>
+            <br />
+            <span
+              className={classNames(
+                { 'lg:opacity-0': !isHover },
+                'font-text font-black text-text transition duration-300 lg:text-3xl'
+              )}
+            >
+              {subtitle}
+            </span>
+          </button>
+        </div>
+      </MouseParallaxContainer>
+    </>
   );
 }

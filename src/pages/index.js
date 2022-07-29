@@ -59,10 +59,10 @@ export default function Home({ config, posts }) {
           parallaxStrength={parallaxStrength}
           videoUrl={prePageBgVideo}
           isBgImg={prePageBgImg !== null}
-          onVisibilityChange={(isVisible) => {
-            setIsMainVisible(!isVisible);
+          handelClick={() => {
+            setIsMainVisible(true);
             setTimeout(() => {
-              setIsPrePageVisible(isVisible);
+              setIsPrePageVisible(false);
             }, 300);
           }}
         />
