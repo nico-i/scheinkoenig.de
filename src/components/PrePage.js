@@ -46,7 +46,7 @@ export default function PrePage(props) {
         <span
           className={classNames(
             { 'lg:opacity-0': !isHover },
-            'font-text font-black text-text underline decoration-2 transition duration-300 lg:text-3xl lg:decoration-4 lg:underline-offset-4'
+            'font-text font-black text-text transition duration-300 lg:text-3xl'
           )}
         >
           {props.subtitle}
