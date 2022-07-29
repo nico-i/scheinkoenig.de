@@ -41,7 +41,7 @@ export default function Home({ config, posts }) {
             --color-primary: ${colorPrimary};
             --color-bg: ${colorBg};
             --color-text: ${colorText};
-            --text-stroke-width: ${'0.02em'};
+            --text-stroke-width: ${config.textStrokeWidth}em;
             --img-prePage: url(${prePageBgImg});
             --font-theme: ${config.fontTheme.split('=')[1].replace('+', ' ')};
             --font-text: ${config.fontText.split('=')[1].replace('+', ' ')};
@@ -52,7 +52,13 @@ export default function Home({ config, posts }) {
         <link href={`${config.fontTheme}&display=swap`} rel="stylesheet" />
       </Helmet>
       <NavBar />
-      <PrePage title={title} subtitle={description} videoUrl={prePageBgVideo} isBgImg={prePageBgImg !== null} />
+      <PrePage
+        title={title}
+        subtitle={description}
+        parallaxStrength={parallaxStrength}
+        videoUrl={prePageBgVideo}
+        isBgImg={prePageBgImg !== null}
+      />
       <main>
         <div className="mt-8 flex h-full w-full flex-wrap items-center justify-center p-6 lg:fixed lg:top-0 lg:right-0 lg:z-30 lg:mt-20 lg:mr-16 lg:block lg:h-48 lg:w-96 lg:flex-nowrap lg:p-0">
           <span className="w-full font-medium text-primary">{config.textIntro}</span>

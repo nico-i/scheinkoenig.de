@@ -9,6 +9,7 @@ export const QUERY_CONFIG = gql`
         colorText
         fontText
         fontTheme
+        textStrokeWidth
         parallaxStrength
         textIntro
         imgPrePageBg {
