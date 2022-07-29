@@ -10,7 +10,7 @@ export default function PrePage(props) {
       src={`${props.videoUrl.split('?')[0]}?background=1&autoplay=1&loop=1&byline=0&title=0`}
       className="absolute top-1/2 left-1/2 -z-10 h-[56.25vw] min-h-screen w-screen min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2"
       frameBorder="0"
-      webkitallowfullscreen
+      webkitallowfullscreen="true"
       mozallowfullscreen="true"
       allowFullScreen
     />
@@ -27,7 +27,7 @@ export default function PrePage(props) {
   return isVisible ? (
     <div
       className={classNames(
-        { 'opacity-0': isClicked, 'bg-prepage': !props.videoUrl, 'bg-theme': props.videoUrl },
+        { 'opacity-0': isClicked, 'bg-prepage': props.isBgImg, 'bg-theme': props.videoUrl || !props.isBgImg },
         'fixed top-0 left-0 z-50 flex h-full w-full items-center justify-center bg-cover bg-center transition duration-300'
       )}
     >
