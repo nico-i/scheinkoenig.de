@@ -68,7 +68,7 @@ export default function NavBar() {
             </Link>
           </li>
         </ul>
-        <div className="fixed bottom-0 left-0 p-8 lg:p-12">
+        <div className="fixed bottom-0 left-1/2 w-full -translate-x-1/2 p-8 lg:left-0 lg:translate-x-0 lg:py-12">
           <ul className="flex flex-wrap items-center justify-center gap-3 leading-loose text-text md:block">
             <li>
               <Link href={'/imprint'}>
@@ -85,7 +85,7 @@ export default function NavBar() {
                 <a>Donation</a>
               </Link>
             </li>
-            <li className="mt-2 flex w-full items-center justify-center gap-3 lg:justify-start">
+            <li className="mt-2 flex w-full items-center justify-center gap-3 md:justify-start">
               <Link href={'https://vimeo.com/'}>
                 <a>
                   <BsVimeo className="h-6 w-6 text-text" />
