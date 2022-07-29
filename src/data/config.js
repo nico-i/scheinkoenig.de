@@ -9,11 +9,11 @@ export const QUERY_CONFIG = gql`
         colorText
         fontText
         fontTheme
-        imgPrepageBg {
+        imgPrePageBg {
           sourceUrl
           altText
         }
-        urlPrepageBgVideo
+        urlPrePageBgVideo
       }
     }
   }
