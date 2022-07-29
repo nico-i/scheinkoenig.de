@@ -30,7 +30,7 @@ export default function NavBar() {
 
   return (
     <>
-      <div className="fixed top-0 z-20 flex w-full justify-between p-4 lg:p-8">
+      <div className="fixed top-0 z-50 flex w-full justify-between p-4 lg:p-8">
         <Link href={'/'}>
           <a onClick={() => setIsOpen(false)}>
             <TbCrown className="h-8 w-8 text-text md:w-10 lg:h-10" />
@@ -48,7 +48,7 @@ export default function NavBar() {
         onClick={() => setIsOpen(false)}
         className={classNames(
           { 'opacity-0': !isOpen || !fadeIn, 'opacity-100': fadeIn && isOpen, hidden: !isVisible },
-          'fixed top-0 z-10 -mt-4 flex h-full w-full items-center justify-center bg-theme transition duration-200 lg:mt-4'
+          '-pt-4 fixed top-0 z-40 flex h-screen w-full items-center justify-center bg-theme transition duration-200 lg:pt-4'
         )}
       >
         <ul className="text-center font-theme text-8xl leading-normal text-primary lg:text-hero lg:leading-none">
