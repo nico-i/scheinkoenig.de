@@ -44,7 +44,7 @@ export default function NavBar() {
           )}
         </button>
       </div>
-      <div
+      <nav
         onClick={() => setIsOpen(false)}
         className={classNames(
           { 'opacity-0': !isOpen || !fadeIn, 'opacity-100': fadeIn && isOpen, hidden: !isVisible },
@@ -54,17 +54,17 @@ export default function NavBar() {
         <ul className="text-center font-theme text-8xl leading-normal text-primary lg:text-hero lg:leading-none">
           <li>
             <Link href={'/'}>
-              <a className="hover:text-outline">Work</a>
+              <a className="hover:text-outline focus:text-outline">Work</a>
             </Link>
           </li>
           <li>
             <Link href={'/contact'}>
-              <a className="hover:text-outline">Contact</a>
+              <a className="hover:text-outline focus:text-outline">Contact</a>
             </Link>
           </li>
           <li>
             <Link href={'/about'}>
-              <a className="hover:text-outline">About</a>
+              <a className="hover:text-outline focus:text-outline">About</a>
             </Link>
           </li>
         </ul>
@@ -99,7 +99,7 @@ export default function NavBar() {
             </li>
           </ul>
         </div>
-      </div>
+      </nav>
     </>
   );
 }
