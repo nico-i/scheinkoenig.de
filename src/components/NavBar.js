@@ -68,7 +68,7 @@ export default function NavBar() {
             </Link>
           </li>
         </ul>
-        <div className="fixed bottom-0 left-1/2 w-full -translate-x-1/2 p-8 lg:left-0 lg:translate-x-0 lg:py-12">
+        <div className="fixed bottom-0 left-1/2 w-full -translate-x-1/2 p-8 md:left-0 md:w-max md:translate-x-0 md:py-12">
           <ul className="flex flex-wrap items-center justify-center gap-3 leading-loose text-text md:block">
             <li>
               <Link href={'/imprint'}>
