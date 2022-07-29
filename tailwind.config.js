@@ -39,7 +39,7 @@ module.exports = {
         text: withOpacity('--color-text'),
       },
       backgroundImage: {
-        prepage: 'var(--img-prepage)',
+        prepage: 'var(--img-prePage)',
       },
     },
   },
