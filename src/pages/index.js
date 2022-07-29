@@ -21,7 +21,8 @@ export default function Home({ config, posts }) {
   const colorBg = getRGBColor(config.colorBg);
   const colorText = getRGBColor(config.colorText);
   const [activeProject, setActiveProject] = useState('');
-
+  const [isPrePageVisible, setIsPrePageVisible] = useState(true);
+  const [isMainVisible, setIsMainVisible] = useState(false);
   let prePageBgImg = null;
   let prePageBgVideo = null;
 
@@ -51,65 +52,79 @@ export default function Home({ config, posts }) {
         <link href={`${config.fontText}&display=swap`} rel="stylesheet" />
         <link href={`${config.fontTheme}&display=swap`} rel="stylesheet" />
       </Helmet>
-      <NavBar />
-      <PrePage
-        title={title}
-        subtitle={description}
-        parallaxStrength={parallaxStrength}
-        videoUrl={prePageBgVideo}
-        isBgImg={prePageBgImg !== null}
-      />
-      <main>
-        <div className="mt-8 flex h-full w-full flex-wrap items-center justify-center p-6 lg:fixed lg:top-0 lg:right-0 lg:z-30 lg:mt-20 lg:mr-16 lg:block lg:h-48 lg:w-96 lg:flex-nowrap lg:p-0">
-          <span className="w-full font-medium text-primary">{config.textIntro}</span>
-          <div className="mt-2 flex w-full items-center justify-start gap-3">
-            <Link href={'https://vimeo.com/'}>
-              <a>
-                <BsVimeo className="h-6 w-6 text-text" />
-              </a>
-            </Link>
-            <Link href={'https://www.instagram.com/'}>
-              <a>
-                <BsInstagram className="h-6 w-6 text-text" />
-              </a>
-            </Link>
-          </div>
-        </div>
-        <MouseParallaxContainer className="z-0 grid grid-cols-1 grid-rows-1 place-content-center">
-          <MouseParallaxChild
-            inverted
-            factorX={parallaxStrength * 2}
-            factorY={parallaxStrength * 2}
-            className="pointer-events-none fixed z-20 hidden h-screen w-screen text-center lg:flex lg:items-center lg:justify-center"
-          >
-            <h2 className="text-outline font-theme text-thumbnail leading-thumbnail text-primary">{activeProject}</h2>
-          </MouseParallaxChild>
-          <div className="h-screen w-screen lg:overflow-scroll">
+      {isPrePageVisible ? (
+        <PrePage
+          title={title}
+          subtitle={description}
+          parallaxStrength={parallaxStrength}
+          videoUrl={prePageBgVideo}
+          isBgImg={prePageBgImg !== null}
+          onVisibilityChange={(isVisible) => {
+            setIsMainVisible(!isVisible);
+            setTimeout(() => {
+              setIsPrePageVisible(isVisible);
+            }, 300);
+          }}
+        />
+      ) : null}
+      {isMainVisible ? (
+        <>
+          <NavBar />
+          <main>
+            <div className="mt-8 flex h-full w-full flex-wrap items-center justify-center p-6 lg:fixed lg:top-0 lg:right-0 lg:z-30 lg:mt-20 lg:mr-16 lg:block lg:h-48 lg:w-96 lg:flex-nowrap lg:p-0">
+              <span className="w-full font-medium text-primary">{config.textIntro}</span>
+              <div className="mt-2 flex w-full items-center justify-start gap-3">
+                <Link href={'https://vimeo.com/'}>
+                  <a>
+                    <BsVimeo className="h-6 w-6 text-text" />
+                  </a>
+                </Link>
+                <Link href={'https://www.instagram.com/'}>
+                  <a>
+                    <BsInstagram className="h-6 w-6 text-text" />
+                  </a>
+                </Link>
+              </div>
+            </div>
             <MouseParallaxContainer className="z-0 grid grid-cols-1 grid-rows-1 place-content-center">
-              <MouseParallaxChild factorX={parallaxStrength} factorY={parallaxStrength}>
-                {posts.map((post) =>
-                  post.settings.thumbnailProject !== null ? (
-                    <Link href={`/${post.slug}`} key={post.title}>
-                      <a className="relative z-0 flex items-center justify-center">
-                        <img
-                          onMouseOver={() => {
-                            setActiveProject(post.title);
-                          }}
-                          alt={post.settings.thumbnailProject?.altText}
-                          src={post.settings.thumbnailProject?.sourceUrl}
-                        />
-                        <h2 className="text-outline pointer-events-none absolute inset-0 z-10 flex items-center justify-center font-theme text-6xl text-primary md:hidden">
-                          {post.title}
-                        </h2>
-                      </a>
-                    </Link>
-                  ) : null
-                )}{' '}
+              <MouseParallaxChild
+                inverted
+                factorX={parallaxStrength * 2}
+                factorY={parallaxStrength * 2}
+                className="pointer-events-none fixed z-20 hidden h-screen w-screen text-center lg:flex lg:items-center lg:justify-center"
+              >
+                <h2 className="text-outline font-theme text-thumbnail leading-thumbnail text-primary">
+                  {activeProject}
+                </h2>
               </MouseParallaxChild>
+              <div className="h-screen w-screen lg:overflow-scroll">
+                <MouseParallaxContainer className="z-0 grid grid-cols-1 grid-rows-1 place-content-center">
+                  <MouseParallaxChild factorX={parallaxStrength} factorY={parallaxStrength}>
+                    {posts.map((post) =>
+                      post.settings.thumbnailProject !== null ? (
+                        <Link href={`/${post.slug}`} key={post.title}>
+                          <a className="relative z-0 flex items-center justify-center">
+                            <img
+                              onMouseOver={() => {
+                                setActiveProject(post.title);
+                              }}
+                              alt={post.settings.thumbnailProject?.altText}
+                              src={post.settings.thumbnailProject?.sourceUrl}
+                            />
+                            <h2 className="text-outline pointer-events-none absolute inset-0 z-10 flex items-center justify-center font-theme text-6xl text-primary md:hidden">
+                              {post.title}
+                            </h2>
+                          </a>
+                        </Link>
+                      ) : null
+                    )}{' '}
+                  </MouseParallaxChild>
+                </MouseParallaxContainer>
+              </div>
             </MouseParallaxContainer>
-          </div>
-        </MouseParallaxContainer>
-      </main>
+          </main>
+        </>
+      ) : null}
     </>
   );
 }
