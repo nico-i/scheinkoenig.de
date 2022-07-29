@@ -19,9 +19,11 @@ module.exports = {
     extend: {
       fontSize: {
         hero: '12rem',
+        thumbnail: '16rem',
       },
       lineHeight: {
         hero: '10rem',
+        thumbnail: '14rem',
       },
       textColor: {
         primary: withOpacity('--color-primary'),
